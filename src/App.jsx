@@ -21,7 +21,7 @@ function App() {
     const buttonsMap = {
         'C': clearHandler,
         '=': equalHandler,
-        // '%': percentageHandler,
+        '%': percentageHandler,
         // '+-': plusMinusHandler
     };
 
@@ -34,7 +34,7 @@ function App() {
             numberDotHandler(value);
         }
     };
-    
+
     const calculateResult = (a, b, operator) => {
         return OPERATORS[operator](Number(a), Number(b));
     };
@@ -57,6 +57,16 @@ function App() {
             });
         }
     };
+
+    function percentageHandler() {
+        if (calc.num) {
+            updateCalc({
+                num: calc.num / 100,
+                result: calc.result,
+            });
+        }
+    }
+    
 
     const signHandler = (value) => {
         const calculatedRes = calc.result && calc.sign
