@@ -21,8 +21,8 @@ function App() {
     const buttonsMap = {
         'C': clearHandler,
         '=': equalHandler,
-        '%': percentageHandler,
-        '+-': plusMinusHandler
+        // '%': percentageHandler,
+        // '+-': plusMinusHandler
     };
 
     const buttonClickHandler = (value) => {
@@ -54,7 +54,11 @@ function App() {
     };
 
     const numberDotHandler = (value) => {
-       
+        if (typeof value === 'number') {
+            updateCalc({ num: calc.num === 0 ? value : calc.num + value.toString() })
+        } else if (!calc.num.toString().includes(value)) {
+            updateCalc({ num: calc.num.toString() + '.' })
+        }
     };
 
     return (
