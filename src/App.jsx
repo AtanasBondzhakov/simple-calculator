@@ -46,9 +46,11 @@ function App() {
             result: ''
         });
     };
-    
     const signHandler = (value) => {
-       
+        const calculatedRes = calc.result && calc.sign
+            ? calculateResult(calc.result, calc.num, calc.sign)
+            : calc.result || calc.num;
+        updateCalc({ num: 0, sign: value, result: calculatedRes });
     };
 
     const numberDotHandler = (value) => {
