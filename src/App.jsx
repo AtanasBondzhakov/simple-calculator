@@ -34,7 +34,19 @@ function App() {
             numberDotHandler(value);
         }
     };
+    
+    const calculateResult = (a, b, operator) => {
+        return OPERATORS[operator](Number(a), Number(b));
+    };
 
+    function clearHandler() {
+        setCalc({
+            num: 0,
+            sign: '',
+            result: ''
+        });
+    };
+    
     const signHandler = (value) => {
        
     };
