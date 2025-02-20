@@ -22,7 +22,7 @@ function App() {
         'C': clearHandler,
         '=': equalHandler,
         '%': percentageHandler,
-        // '+-': plusMinusHandler
+        '+-': plusMinusHandler
     };
 
     const buttonClickHandler = (value) => {
@@ -65,8 +65,12 @@ function App() {
                 result: calc.result,
             });
         }
-    }
-    
+    };
+
+    function plusMinusHandler() {
+        const value = calc.num !== 0 ? 'num' : 'result';
+        updateCalc({ [value]: calc[value] > 0 ? -calc[value] : calc[value].toString().replace('-', '') });
+    };
 
     const signHandler = (value) => {
         const calculatedRes = calc.result && calc.sign
@@ -84,27 +88,25 @@ function App() {
     };
 
     return (
-        <>
-            <div className='main-wrapper'>
-                <div>
-                    <div className='result-screen'>
-                        {calc.num || calc.result || 0}
-                    </div>
-                </div>
-                <div className='buttons-wrapper'>
-                    <ButtonBox>
-                        {BUTTONS.flat().map((btn, i) => {
-                            return <Button
-                                key={i}
-                                className={btn === '=' ? 'long' : 'button'}
-                                onClick={() => buttonClickHandler(btn)}
-                                value={btn}
-                            />
-                        })}
-                    </ButtonBox>
+        <div className='main-wrapper'>
+            <div>
+                <div className='result-screen'>
+                    {calc.num || calc.result || 0}
                 </div>
             </div>
-        </>
+            <div className='buttons-wrapper'>
+                <ButtonBox>
+                    {BUTTONS.flat().map((btn, i) => {
+                        return <Button
+                            key={i}
+                            className={btn === '=' ? 'long' : 'button'}
+                            onClick={() => buttonClickHandler(btn)}
+                            value={btn}
+                        />
+                    })}
+                </ButtonBox>
+            </div>
+        </div>
     )
 }
 
