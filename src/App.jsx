@@ -35,6 +35,14 @@ function App() {
         }
     };
 
+    const signHandler = (value) => {
+       
+    };
+
+    const numberDotHandler = (value) => {
+       
+    };
+
     return (
         <>
             <div className='main-wrapper'>
