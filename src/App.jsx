@@ -46,6 +46,18 @@ function App() {
             result: ''
         });
     };
+
+    function equalHandler() {
+        if (calc.result && calc.num !== 0) {
+            const calculatedResult = parseFloat(calculateResult(calc.result, calc.num, calc.sign).toFixed(10))
+            updateCalc({
+                num: 0,
+                sign: '',
+                result: calculatedResult
+            });
+        }
+    };
+
     const signHandler = (value) => {
         const calculatedRes = calc.result && calc.sign
             ? calculateResult(calc.result, calc.num, calc.sign)
